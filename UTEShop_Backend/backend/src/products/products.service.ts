@@ -28,6 +28,7 @@ export class ProductsService {
   }
 
 async create(createProductDto: CreateProductDto) {
+  console.log('Creating product with data:', createProductDto);
   const product = await this.drinkModel.create({
     ...createProductDto,
     stock: createProductDto.stock || 0,
@@ -37,11 +38,13 @@ async create(createProductDto: CreateProductDto) {
     created_at: new Date(),
     updated_at: new Date(),
   } as any);
+  console.log('Product created successfully:', product);
   return product;
 }
 
 
   async update(id: number, updateProductDto: UpdateProductDto) {
+    console.log('Updating product with id:', id, 'data:', updateProductDto);
     const [affectedCount] = await this.drinkModel.update(
       {
         ...updateProductDto,
@@ -51,10 +54,12 @@ async create(createProductDto: CreateProductDto) {
         where: { id },
       },
     );
+    console.log('Product update affected rows:', affectedCount);
     return affectedCount > 0;
   }
 
   async hide(id: number) {
+    console.log('Hiding product with id:', id);
     const [affectedCount] = await this.drinkModel.update(
       {
         is_hidden: true,
@@ -64,10 +69,12 @@ async create(createProductDto: CreateProductDto) {
         where: { id },
       },
     );
+    console.log('Product hide affected rows:', affectedCount);
     return affectedCount > 0;
   }
 
   async show(id: number) {
+    console.log('Showing product with id:', id);
     const [affectedCount] = await this.drinkModel.update(
       {
         is_hidden: false,
@@ -77,13 +84,8 @@ async create(createProductDto: CreateProductDto) {
         where: { id },
       },
     );
+    console.log('Product show affected rows:', affectedCount);
     return affectedCount > 0;
   }
 
-  async remove(id: number) {
-    const affectedCount = await this.drinkModel.destroy({
-      where: { id },
-    });
-    return affectedCount > 0;
-  }
 }

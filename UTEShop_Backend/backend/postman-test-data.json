@@ -1,0 +1,123 @@
+{
+  "test_products": [
+    {
+      "name": "Cà phê đen truyền thống",
+      "slug": "ca-phe-den-truyen-thong",
+      "description": "Cà phê đen nguyên chất, đậm đà hương vị truyền thống",
+      "price": 25000,
+      "salePrice": 20000,
+      "size": "M",
+      "stock": 50,
+      "views": 120,
+      "sold": 15,
+      "image_url": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=300",
+      "category_id": 1
+    },
+    {
+      "name": "Cappuccino",
+      "slug": "cappuccino",
+      "description": "Cà phê espresso với sữa đánh bông mịn màng",
+      "price": 45000,
+      "salePrice": 40000,
+      "size": "L",
+      "stock": 30,
+      "views": 85,
+      "sold": 8,
+      "image_url": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=300",
+      "category_id": 1
+    },
+    {
+      "name": "Trà sữa trân châu",
+      "slug": "tra-sua-tran-chau",
+      "description": "Trà sữa thơm ngon với trân châu dai giòn",
+      "price": 35000,
+      "salePrice": 30000,
+      "size": "L",
+      "stock": 40,
+      "views": 200,
+      "sold": 25,
+      "image_url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300",
+      "category_id": 2
+    },
+    {
+      "name": "Matcha Latte",
+      "slug": "matcha-latte",
+      "description": "Trà xanh matcha Nhật Bản với sữa tươi",
+      "price": 55000,
+      "salePrice": 50000,
+      "size": "M",
+      "stock": 25,
+      "views": 95,
+      "sold": 12,
+      "image_url": "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=300",
+      "category_id": 2
+    },
+    {
+      "name": "Nước ép cam tươi",
+      "slug": "nuoc-ep-cam-tuoi",
+      "description": "Nước ép cam nguyên chất, giàu vitamin C",
+      "price": 30000,
+      "salePrice": 25000,
+      "size": "M",
+      "stock": 60,
+      "views": 150,
+      "sold": 20,
+      "image_url": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=300",
+      "category_id": 3
+    }
+  ],
+  "api_endpoints": {
+    "base_url": "http://localhost:3001",
+    "endpoints": {
+      "get_all_products": "GET /products",
+      "get_products_for_customer": "GET /products/customer",
+      "get_product_by_id": "GET /products/:id",
+      "create_product": "POST /products",
+      "update_product": "PATCH /products/:id",
+      "hide_product": "PATCH /products/:id/hide",
+      "show_product": "PATCH /products/:id/show"
+    }
+  },
+  "test_scenarios": [
+    {
+      "name": "Test thêm sản phẩm mới",
+      "method": "POST",
+      "url": "http://localhost:3001/products",
+      "body": {
+        "name": "Test Product",
+        "slug": "test-product",
+        "description": "Sản phẩm test",
+        "price": 30000,
+        "salePrice": 25000,
+        "size": "M",
+        "stock": 10,
+        "views": 0,
+        "sold": 0,
+        "image_url": "https://example.com/image.jpg",
+        "category_id": 1
+      }
+    },
+    {
+      "name": "Test cập nhật sản phẩm",
+      "method": "PATCH",
+      "url": "http://localhost:3001/products/1",
+      "body": {
+        "name": "Updated Product Name",
+        "price": 35000,
+        "stock": 20
+      }
+    },
+    {
+      "name": "Test ẩn sản phẩm",
+      "method": "PATCH",
+      "url": "http://localhost:3001/products/1/hide",
+      "body": {}
+    },
+    {
+      "name": "Test hiển thị sản phẩm",
+      "method": "PATCH",
+      "url": "http://localhost:3001/products/1/show",
+      "body": {}
+    }
+  ]
+}

@@ -12,8 +12,8 @@ async function bootstrap() {
   }));
   
   app.enableCors({
-    origin: process.env.FRONTEND_ORIGIN || 'http://localhost:3000',
-    methods: 'GET,POST,PUT,DELETE',
+    origin: true, // Cho phép tất cả origins
+    methods: 'GET,POST,PUT,DELETE,PATCH',
     credentials: true,
   });
   

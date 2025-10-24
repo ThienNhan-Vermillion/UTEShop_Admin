@@ -195,35 +195,4 @@ export class ProductsController {
     }
   }
 
-  @Delete(':id')
-  async remove(@Param('id') id: string) {
-    try {
-      const removed = await this.productsService.remove(+id);
-      if (!removed) {
-        throw new HttpException(
-          {
-            success: false,
-            message: 'Không tìm thấy sản phẩm để xóa',
-          },
-          HttpStatus.NOT_FOUND,
-        );
-      }
-      return {
-        success: true,
-        message: 'Sản phẩm đã được xóa thành công',
-      };
-    } catch (error) {
-      if (error instanceof HttpException) {
-        throw error;
-      }
-      throw new HttpException(
-        {
-          success: false,
-          message: 'Lỗi khi xóa sản phẩm',
-          error: error.message,
-        },
-        HttpStatus.INTERNAL_SERVER_ERROR,
-      );
-    }
-  }
 }
